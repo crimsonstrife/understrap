@@ -79,36 +79,6 @@ if ( ! function_exists( 'understrap_change_logo_class' ) ) {
 	}
 }
 
-if ( ! function_exists( 'understrap_post_nav' ) ) {
-	/**
-	 * Display navigation to next/previous post when applicable.
-	 */
-	function understrap_post_nav() {
-		// Don't print empty markup if there's nowhere to navigate.
-		$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-		$next     = get_adjacent_post( false, '', false );
-
-		if ( ! $next && ! $previous ) {
-			return;
-		}
-		?>
-		<nav class="container navigation post-navigation">
-			<h2 class="sr-only"><?php esc_html_e( 'Post navigation', 'understrap' ); ?></h2>
-			<div class="row nav-links justify-content-between">
-				<?php
-				if ( get_previous_post_link() ) {
-					previous_post_link( '<span class="nav-previous">%link</span>', _x( '<i class="fa fa-angle-left"></i>&nbsp;%title', 'Previous post link', 'understrap' ) );
-				}
-				if ( get_next_post_link() ) {
-					next_post_link( '<span class="nav-next">%link</span>', _x( '%title&nbsp;<i class="fa fa-angle-right"></i>', 'Next post link', 'understrap' ) );
-				}
-				?>
-			</div><!-- .nav-links -->
-		</nav><!-- .navigation -->
-		<?php
-	}
-}
-
 if ( ! function_exists( 'understrap_pingback' ) ) {
 	/**
 	 * Add a pingback url auto-discovery header for single posts of any post type.
@@ -147,3 +117,26 @@ if ( ! function_exists( 'understrap_default_body_attributes' ) ) {
 	}
 }
 add_filter( 'understrap_body_attributes', 'understrap_default_body_attributes' );
+
+if ( ! function_exists( 'understrap_post_nav_link_class' ) ) {
+	/**
+	 * Adds CSS class to a post navigation link.
+	 *
+	 * @param string  $output   HTML markup for the adjacent post link..
+	 * @param string  $format   Link anchor format.
+	 * @param string  $link     Link permalink format.
+	 * @param WP_Post $post     The adjacent post.
+	 * @param string  $adjacent Whether the post is previous or next.
+	 * @return string
+	 */
+	function understrap_post_nav_link_class( $output, $format, $link, $post, $adjacent ) {
+		if ( 'previous' === $adjacent ) {
+			$output = str_replace( '<a ', '<a class="nav-link nav-previous pl-0" ', $output );
+		} else {
+			$output = str_replace( '<a ', '<a class="nav-link nav-next pr-0" ', $output );
+		}
+		return $output;
+	}
+}
+add_filter( 'next_post_link', 'understrap_post_nav_link_class', 20, 5 );
+add_filter( 'previous_post_link', 'understrap_post_nav_link_class', 20, 5 );
