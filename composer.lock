@@ -128,20 +128,15 @@
             "zend",
             "zikula"
         ],
-        <<
-        << << < HEAD "time": "2019-08-12T15:00:31+00:00" ===
-            === =
-            "funding": [{
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                    "type": "tidelift"
-                }
-            ],
-        "time": "2020-04-07T06:57:05+00:00" >>>
-            >>> > pr / 12
+        "funding": [{
+                "url": "https://packagist.com",
+                "type": "custom"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                "type": "tidelift"
+            }
+        ]
     }],
     "packages-dev": [{
                 "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -260,8 +255,7 @@
             },
             {
                 "name": "phpcompatibility/php-compatibility",
-                <<
-                << << < HEAD "version": "9.3.4",
+                "version": "9.3.4",
                 "source": {
                     "type": "git",
                     "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
@@ -271,8 +265,6 @@
                     "type": "zip",
                     "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/1f37659196e4f3113ea506a7efba201c52303bf1",
                     "reference": "1f37659196e4f3113ea506a7efba201c52303bf1",
-                    ===
-                    === =
                     "version": "9.3.5",
                     "source": {
                         "type": "git",
@@ -283,8 +275,7 @@
                         "type": "zip",
                         "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/9fb324479acf6f39452e0655d2429cc0d3914243",
                         "reference": "9fb324479acf6f39452e0655d2429cc0d3914243",
-                        >>>
-                        >>> > pr / 12 "shasum": ""
+                        "shasum": ""
                     },
                     "require": {
                         "php": ">=5.3",
@@ -327,8 +318,6 @@
                         "phpcs",
                         "standards"
                     ],
-                    <<
-                    << << < HEAD "time": "2019-11-15T04:12:02+00:00"
                 },
                 {
                     "name": "squizlabs/php_codesniffer",
@@ -342,8 +331,6 @@
                         "type": "zip",
                         "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/557a1fc7ac702c66b0bbfe16ab3d55839ef724cb",
                         "reference": "557a1fc7ac702c66b0bbfe16ab3d55839ef724cb",
-                        ===
-                        === =
                         "time": "2019-12-27T09:44:58+00:00"
                     },
                     {
@@ -736,8 +723,7 @@
                             "type": "zip",
                             "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
                             "reference": "73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
-                            >>>
-                            >>> > pr / 12 "shasum": ""
+                            "shasum": ""
                         },
                         "require": {
                             "ext-simplexml": "*",
@@ -772,8 +758,6 @@
                             "phpcs",
                             "standards"
                         ],
-                        <<
-                        << << < HEAD "time": "2019-12-04T04:46:47+00:00"
                     },
                     {
                         "name": "wp-coding-standards/wpcs",
@@ -787,9 +771,6 @@
                             "type": "zip",
                             "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/f90e8692ce97b693633db7ab20bfa78d930f536a",
                             "reference": "f90e8692ce97b693633db7ab20bfa78d930f536a",
-                            ===
-                            === =
-                            "time": "2020-04-17T01:09:41+00:00"
                         },
                         {
                             "name": "wp-coding-standards/wpcs",
@@ -803,8 +784,7 @@
                                 "type": "zip",
                                 "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/7da1894633f168fe244afc6de00d141f27517b62",
                                 "reference": "7da1894633f168fe244afc6de00d141f27517b62",
-                                >>>
-                                >>> > pr / 12 "shasum": ""
+                                "shasum": ""
                             },
                             "require": {
                                 "php": ">=5.4",
@@ -834,10 +814,6 @@
                                 "standards",
                                 "wordpress"
                             ],
-                            <<
-                            << << < HEAD "time": "2019-11-11T12:34:03+00:00" ===
-                                === =
-                                "time": "2020-05-13T23:57:56+00:00"
                         },
                         {
                             "name": "wptrt/wpthemereview",
@@ -906,8 +882,6 @@
                                 "themes",
                                 "wordpress"
                             ],
-                            "time": "2019-11-17T20:05:55+00:00" >>>
-                                >>> > pr / 12
                         }
                     ],
                     "aliases": [],
