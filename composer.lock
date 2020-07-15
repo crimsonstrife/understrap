@@ -317,7 +317,7 @@
                         "compatibility",
                         "phpcs",
                         "standards"
-                    ],
+                    ]
                 },
                 {
                     "name": "squizlabs/php_codesniffer",
@@ -708,8 +708,7 @@
                                 "url": "https://tidelift.com/funding/github/packagist/roave/security-advisories",
                                 "type": "tidelift"
                             }
-                        ],
-                        "time": "2020-05-16T00:00:31+00:00"
+                        ]
                     },
                     {
                         "name": "squizlabs/php_codesniffer",
@@ -757,7 +756,7 @@
                         "keywords": [
                             "phpcs",
                             "standards"
-                        ],
+                        ]
                     },
                     {
                         "name": "wp-coding-standards/wpcs",
@@ -813,7 +812,7 @@
                                 "phpcs",
                                 "standards",
                                 "wordpress"
-                            ],
+                            ]
                         },
                         {
                             "name": "wptrt/wpthemereview",
@@ -881,7 +880,7 @@
                                 "standards",
                                 "themes",
                                 "wordpress"
-                            ],
+                            ]
                         }
                     ],
                     "aliases": [],
