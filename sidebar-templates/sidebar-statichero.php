@@ -2,7 +2,7 @@
 /**
  * Static hero sidebar setup
  *
- * @package understrap
+ * @package UnderStrap
  */
 
 // Exit if accessed directly.
@@ -29,4 +29,5 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 	</div><!-- #wrapper-static-hero -->
 
-<?php endif;
+	<?php
+endif;

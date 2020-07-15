@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package understrap
+ * @package UnderStrap
  */
 
 // Exit if accessed directly.
@@ -48,7 +48,7 @@ if ( ! function_exists( 'understrap_adjust_body_class' ) ) {
 	function understrap_adjust_body_class( $classes ) {
 
 		foreach ( $classes as $key => $value ) {
-			if ( 'tag' == $value ) {
+			if ( 'tag' === $value ) {
 				unset( $classes[ $key ] );
 			}
 		}
@@ -118,25 +118,107 @@ if ( ! function_exists( 'understrap_default_body_attributes' ) ) {
 }
 add_filter( 'understrap_body_attributes', 'understrap_default_body_attributes' );
 
-if ( ! function_exists( 'understrap_post_nav_link_class' ) ) {
+// Escapes all occurances of 'the_archive_description'.
+add_filter( 'get_the_archive_description', 'understrap_escape_the_archive_description' );
+
+if ( ! function_exists( 'understrap_escape_the_archive_description' ) ) {
 	/**
-	 * Adds CSS class to a post navigation link.
+	 * Escapes the description for an author or post type archive.
 	 *
-	 * @param string  $output   HTML markup for the adjacent post link..
-	 * @param string  $format   Link anchor format.
-	 * @param string  $link     Link permalink format.
-	 * @param WP_Post $post     The adjacent post.
-	 * @param string  $adjacent Whether the post is previous or next.
-	 * @return string
+	 * @param string $description Archive description.
+	 * @return string Maybe escaped $description.
 	 */
-	function understrap_post_nav_link_class( $output, $format, $link, $post, $adjacent ) {
-		if ( 'previous' === $adjacent ) {
-			$output = str_replace( '<a ', '<a class="nav-link nav-previous pl-0" ', $output );
+	function understrap_escape_the_archive_description( $description ) {
+		if ( is_author() || is_post_type_archive() ) {
+			return wp_kses_post( $description );
 		} else {
-			$output = str_replace( '<a ', '<a class="nav-link nav-next pr-0" ', $output );
+			/*
+			* All other descriptions are retrieved via term_description() which returns
+			* a sanitized description.
+			*/
+			return $description;
 		}
-		return $output;
 	}
-}
-add_filter( 'next_post_link', 'understrap_post_nav_link_class', 20, 5 );
-add_filter( 'previous_post_link', 'understrap_post_nav_link_class', 20, 5 );
+} // End of if function_exists( 'understrap_escape_the_archive_description' ).
+
+// Escapes all occurances of 'the_title()' and 'get_the_title()'.
+add_filter( 'the_title', 'understrap_kses_title' );
+
+// Escapes all occurances of 'the_archive_title' and 'get_the_archive_title()'.
+add_filter( 'get_the_archive_title', 'understrap_kses_title' );
+
+if ( ! function_exists( 'understrap_kses_title' ) ) {
+	/**
+	 * Sanitizes data for allowed HTML tags for post title.
+	 *
+	 * @param string $data Post title to filter.
+	 * @return string Filtered post title with allowed HTML tags and attributes intact.
+	 */
+	function understrap_kses_title( $data ) {
+		// Tags not supported in HTML5 are not allowed.
+		$allowed_tags = array(
+			'abbr'             => array(),
+			'aria-describedby' => true,
+			'aria-details'     => true,
+			'aria-label'       => true,
+			'aria-labelledby'  => true,
+			'aria-hidden'      => true,
+			'b'                => array(),
+			'bdo'              => array(
+				'dir' => true,
+			),
+			'blockquote'       => array(
+				'cite'     => true,
+				'lang'     => true,
+				'xml:lang' => true,
+			),
+			'cite'             => array(
+				'dir'  => true,
+				'lang' => true,
+			),
+			'dfn'              => array(),
+			'em'               => array(),
+			'i'                => array(
+				'aria-describedby' => true,
+				'aria-details'     => true,
+				'aria-label'       => true,
+				'aria-labelledby'  => true,
+				'aria-hidden'      => true,
+				'class'            => true,
+			),
+			'code'             => array(),
+			'del'              => array(
+				'datetime' => true,
+			),
+			'ins'              => array(
+				'datetime' => true,
+				'cite'     => true,
+			),
+			'kbd'              => array(),
+			'mark'             => array(),
+			'pre'              => array(
+				'width' => true,
+			),
+			'q'                => array(
+				'cite' => true,
+			),
+			's'                => array(),
+			'samp'             => array(),
+			'span'             => array(
+				'dir'      => true,
+				'align'    => true,
+				'lang'     => true,
+				'xml:lang' => true,
+			),
+			'small'            => array(),
+			'strong'           => array(),
+			'sub'              => array(),
+			'sup'              => array(),
+			'u'                => array(),
+			'var'              => array(),
+		);
+		$allowed_tags = apply_filters( 'understrap_kses_title', $allowed_tags );
+
+		return wp_kses( $data, $allowed_tags );
+	}
+} // End of if function_exists( 'understrap_kses_title' ).
