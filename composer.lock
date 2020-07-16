@@ -318,8 +318,7 @@
                         "phpcs",
                         "standards"
                     ]
-                },
-                {
+                } {
                     "name": "squizlabs/php_codesniffer",
                     "version": "3.5.3",
                     "source": {
