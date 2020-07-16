@@ -34,8 +34,7 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 add_action( 'woocommerce_before_main_content', 'understrap_woocommerce_wrapper_start', 10 );
 add_action( 'woocommerce_after_main_content', 'understrap_woocommerce_wrapper_end', 10 );
 
-if ( ! function_exists( 'understrap_woocommerce_wrapper_start' ) ) {
-	
+if ( ! function_exists( 'understrap_woocommerce_wrapper_start' ) ) {	
 	/**
 	 * Display the theme specific start of the page wrapper.
 	 */
@@ -50,7 +49,6 @@ if ( ! function_exists( 'understrap_woocommerce_wrapper_start' ) ) {
 }
 
 if ( ! function_exists( 'understrap_woocommerce_wrapper_end' ) ) {
-	
 	/**
 	 * Display the theme specific end of the page wrapper.
 	 */
@@ -64,7 +62,6 @@ if ( ! function_exists( 'understrap_woocommerce_wrapper_end' ) ) {
 }
 
 if ( ! function_exists( 'understrap_wc_form_field_args' ) ) {
-	
 	/**
 	 * Filter hook function monkey patching form classes
 	 * Author: Adriano Monecchi http://stackoverflow.com/a/36724593/307826
@@ -145,8 +142,7 @@ if ( ! function_exists( 'understrap_wc_form_field_args' ) ) {
 	}
 }
 
-if ( ! is_admin() && ! function_exists( 'wc_review_ratings_enabled' ) ) {
-	
+if ( ! is_admin() && ! function_exists( 'wc_review_ratings_enabled' ) ) {	
 	/**
 	 * Check if reviews are enabled.
 	 *
