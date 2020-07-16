@@ -35,6 +35,7 @@ add_action( 'woocommerce_before_main_content', 'understrap_woocommerce_wrapper_s
 add_action( 'woocommerce_after_main_content', 'understrap_woocommerce_wrapper_end', 10 );
 
 if ( ! function_exists( 'understrap_woocommerce_wrapper_start' ) ) {
+	
 	/**
 	 * Display the theme specific start of the page wrapper.
 	 */
@@ -49,6 +50,7 @@ if ( ! function_exists( 'understrap_woocommerce_wrapper_start' ) ) {
 }
 
 if ( ! function_exists( 'understrap_woocommerce_wrapper_end' ) ) {
+	
 	/**
 	 * Display the theme specific end of the page wrapper.
 	 */
@@ -62,6 +64,7 @@ if ( ! function_exists( 'understrap_woocommerce_wrapper_end' ) ) {
 }
 
 if ( ! function_exists( 'understrap_wc_form_field_args' ) ) {
+	
 	/**
 	 * Filter hook function monkey patching form classes
 	 * Author: Adriano Monecchi http://stackoverflow.com/a/36724593/307826
@@ -77,6 +80,7 @@ if ( ! function_exists( 'understrap_wc_form_field_args' ) ) {
 		switch ( $args['type'] ) {
 			// Targets all select input type elements, except the country and state select input types.
 			case 'select':
+				
 				/*
 				 * Add a class to the field's html element wrapper - woocommerce
 				 * input types (fields) are often wrapped within a <p></p> tag.
@@ -91,6 +95,7 @@ if ( ! function_exists( 'understrap_wc_form_field_args' ) ) {
 					'aria-hidden'      => 'true',
 				);
 				break;
+			
 			/*
 			 * By default WooCommerce will populate a select with the country names - $args
 			 * defined for this specific input type targets only the country select element.
@@ -98,6 +103,7 @@ if ( ! function_exists( 'understrap_wc_form_field_args' ) ) {
 			case 'country':
 				$args['class'][] = 'form-group single-country';
 				break;
+			
 			/*
 			 * By default WooCommerce will populate a select with state names - $args defined
 			 * for this specific input type targets only the country select element.
@@ -140,6 +146,7 @@ if ( ! function_exists( 'understrap_wc_form_field_args' ) ) {
 }
 
 if ( ! is_admin() && ! function_exists( 'wc_review_ratings_enabled' ) ) {
+	
 	/**
 	 * Check if reviews are enabled.
 	 *
