@@ -91,7 +91,6 @@ if ( ! function_exists( 'understrap_wc_form_field_args' ) ) {
 					'aria-hidden'      => 'true',
 				);
 				break;
-			
 			/*
 			 * By default WooCommerce will populate a select with the country names - $args
 			 * defined for this specific input type targets only the country select element.
@@ -99,7 +98,6 @@ if ( ! function_exists( 'understrap_wc_form_field_args' ) ) {
 			case 'country':
 				$args['class'][] = 'form-group single-country';
 				break;
-			
 			/*
 			 * By default WooCommerce will populate a select with state names - $args defined
 			 * for this specific input type targets only the country select element.
